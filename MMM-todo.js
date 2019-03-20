@@ -60,7 +60,7 @@ Module.register("MMM-todo", {
 
     getCheckbox: function(label, id) {
         var container = document.createElement("label")
-        container.className = "container"
+        container.className = "todo-container"
         container.innerText = label
 
         var cb = document.createElement("input")
@@ -68,11 +68,11 @@ Module.register("MMM-todo", {
         if (id !== undefined) {
             cb.id = id
         }
-        if (localStorage.getItem(cb.id)) {
+        if (parseInt(localStorage.getItem(cb.id), 10)) {
             cb.checked = true
         }
         cb.onclick = function(ev) {
-            localStorage.setItem(ev.target.id, cb.checked)
+            localStorage.setItem(ev.target.id, cb.checked ? 1 : 0)
         }
 
         var cm = document.createElement("span")
