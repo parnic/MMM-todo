@@ -15,7 +15,7 @@ Module.register("MMM-todo", {
         self.updateDom()
         setTimeout(function() {
             self.dailyUpdate()
-        }, 24 * 60 * 60 * 1000)
+        }, self.getTimeToMidnight())
     },
 
     getDom: function() {
