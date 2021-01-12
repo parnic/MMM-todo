@@ -4,18 +4,15 @@ Module.register("MMM-todo", {
     },
 
     start: function() {
-        var self = this
-        setTimeout(function() {
-            self.dailyUpdate()
-        }, self.getTimeToMidnight() - new Date())
+        this.doUpdate()
     },
 
-    dailyUpdate: function() {
+    doUpdate: function() {
         var self = this
         self.updateDom()
         setTimeout(function() {
-            self.dailyUpdate()
-        }, self.getTimeToMidnight())
+            self.doUpdate()
+        }, 5 * 60 * 1000)
     },
 
     getDom: function() {
@@ -50,12 +47,6 @@ Module.register("MMM-todo", {
         var ty = date.getFullYear()
 
         return ty + tm + td
-    },
-
-    getTimeToMidnight() {
-        var timeToMidnight = new Date()
-        timeToMidnight.setHours(24, 0, 0, 0)
-        return timeToMidnight
     },
 
     getCheckbox: function(label, id) {
